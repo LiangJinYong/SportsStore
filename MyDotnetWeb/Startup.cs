@@ -32,6 +32,7 @@ namespace MyDotnetWeb
                 );
             });
             services.AddScoped<IStoreRepository, EFStoreRepository>();
+            services.AddRazorPages();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +49,7 @@ namespace MyDotnetWeb
                 endpoints.MapControllerRoute("category", "{category}", new { Controller = "Home", action = "Index", productPage = 1 });
                 endpoints.MapControllerRoute("pagination", "Products/Page{productPage}", new { Controller = "Home", action = "Index" });
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapRazorPages();
             });
             SeedData.EnsurePopulated(app);
         }
